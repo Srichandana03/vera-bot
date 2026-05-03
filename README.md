@@ -4,7 +4,7 @@ A conversational AI assistant for booking, canceling, and rescheduling appointme
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Endpoint
 
 👉 https://vera-bot-1-ldar.onrender.com
 
@@ -12,84 +12,109 @@ A conversational AI assistant for booking, canceling, and rescheduling appointme
 
 ## 🧠 Overview
 
-Vera Bot enables users to interact conversationally to manage appointments.
-It supports flexible inputs like:
-
-* "tomorrow evening"
-* "next monday 6pm"
-* "book appointment 5 nov 9pm"
-
-The system maintains conversational state and handles multi-step interactions.
+Vera Bot is a stateful conversational system that supports multi-turn dialogue for appointment management.
+It processes natural language input and extracts structured date/time information to perform actions.
 
 ---
 
 ## ✨ Features
 
-* ✅ Multi-turn booking flow (date + time collection)
-* ✅ Handles partial inputs (only date / only time)
-* ✅ Flexible input order (time → date or date → time)
-* ✅ Cancellation support ("cancel my booking")
-* ✅ Rescheduling ("change my appointment to friday 8pm")
-* ✅ Correction handling ("actually make it tuesday 6pm")
-* ✅ Date validation (prevents past bookings)
+* Multi-turn booking flow
+* Handles partial inputs (date-only / time-only)
+* Flexible phrasing ("tomorrow evening", "next monday 6pm")
+* Cancel booking
+* Reschedule booking
+* Correction handling ("actually make it tuesday")
+* Basic validation (prevents past dates)
 
 ---
 
 ## 🧱 Tech Stack
 
 * Python
-* Flask (Backend API)
-* dateparser (Natural language date/time parsing)
-* Render (Deployment)
-* Git & GitHub (Version control)
+* Flask (API backend)
+* dateparser (NLP for date/time extraction)
+* Render (deployment)
+* GitHub (version control)
 
 ---
 
-## ⚙️ Architecture
+## ⚙️ API Endpoints
 
+Base URL:
+
+```id="bp9r0a"
+https://vera-bot-1-ldar.onrender.com
 ```
-User Input → Intent Detection → Action Handler → State Update → Response
-```
-
-### Components:
-
-* `intent.py` → detects user intent
-* `actions.py` → handles logic + state
-* `utils.py` → extracts date/time
-* `app.py` → Flask API
 
 ---
 
-## 🔌 API Usage
+### 🔹 POST `/v1/reply`
 
-### Endpoint
+Handles user messages and returns bot response.
 
-```
-POST /chat
-```
+#### Request
 
-### Request
-
-```json
+```json id="ev2pf6"
 {
   "message": "book appointment tomorrow 7pm"
 }
 ```
 
-### Response
+#### Response
 
-```json
+```json id="0sm4ij"
 {
   "action": "book_appointment",
-  "response": "You're all set! I've booked your appointment..."
+  "body": "You're all set! I've booked your appointment..."
 }
 ```
 
 ---
 
-## 🧪 Example Conversation
+### 🔹 POST `/v1/context`
 
+Used to initialize or reset conversation state.
+
+```json id="j5sf0c"
+{
+  "reset": true
+}
 ```
+
+---
+
+### 🔹 POST `/v1/tick`
+
+Heartbeat / no-op endpoint.
+
+---
+
+### 🔹 GET `/v1/healthz`
+
+```json id="wdlhpn"
+{
+  "status": "ok"
+}
+```
+
+---
+
+### 🔹 GET `/v1/metadata`
+
+```json id="lb0v3n"
+{
+  "name": "Vera Bot",
+  "version": "1.0",
+  "capabilities": ["booking", "cancel", "reschedule"]
+}
+```
+
+---
+
+## 🧪 Example Interaction
+
+```id="r0t9nr"
 User: book appointment
 Bot: Sure — what date and time should I book?
 
@@ -113,7 +138,7 @@ Bot: You're all set! I've booked your appointment...
 
 ## 🚀 Run Locally
 
-```bash
+```bash id="zv0q2r"
 pip install -r requirements.txt
 python app.py
 ```
