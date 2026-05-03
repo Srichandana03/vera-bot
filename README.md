@@ -4,12 +4,6 @@ A conversational AI assistant for booking, canceling, and rescheduling appointme
 
 ---
 
-## 🌐 Live Endpoint
-
-👉 https://vera-bot-1-ldar.onrender.com
-
----
-
 ## 🧠 Overview
 
 Vera Bot is a stateful conversational system that supports multi-turn dialogue for appointment management.
@@ -43,8 +37,8 @@ It processes natural language input and extracts structured date/time informatio
 
 Base URL:
 
-```id="bp9r0a"
-https://vera-bot-1-ldar.onrender.com
+```id="m1p1qb"
+<your deployed base URL>
 ```
 
 ---
@@ -55,7 +49,7 @@ Handles user messages and returns bot response.
 
 #### Request
 
-```json id="ev2pf6"
+```json id="m66b7o"
 {
   "message": "book appointment tomorrow 7pm"
 }
@@ -63,7 +57,7 @@ Handles user messages and returns bot response.
 
 #### Response
 
-```json id="0sm4ij"
+```json id="0jxm7c"
 {
   "action": "book_appointment",
   "body": "You're all set! I've booked your appointment..."
@@ -76,7 +70,7 @@ Handles user messages and returns bot response.
 
 Used to initialize or reset conversation state.
 
-```json id="j5sf0c"
+```json id="1qpx1y"
 {
   "reset": true
 }
@@ -92,7 +86,7 @@ Heartbeat / no-op endpoint.
 
 ### 🔹 GET `/v1/healthz`
 
-```json id="wdlhpn"
+```json id="f6o96t"
 {
   "status": "ok"
 }
@@ -102,7 +96,7 @@ Heartbeat / no-op endpoint.
 
 ### 🔹 GET `/v1/metadata`
 
-```json id="lb0v3n"
+```json id="92t2eq"
 {
   "name": "Vera Bot",
   "version": "1.0",
@@ -114,7 +108,7 @@ Heartbeat / no-op endpoint.
 
 ## 🧪 Example Interaction
 
-```id="r0t9nr"
+```id="hzl2xv"
 User: book appointment
 Bot: Sure — what date and time should I book?
 
@@ -138,7 +132,7 @@ Bot: You're all set! I've booked your appointment...
 
 ## 🚀 Run Locally
 
-```bash id="zv0q2r"
+```bash id="n6c6j9"
 pip install -r requirements.txt
 python app.py
 ```
