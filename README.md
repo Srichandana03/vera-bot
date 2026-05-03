@@ -1,102 +1,62 @@
 # Vera Bot 🤖
 
-A conversational AI assistant that handles appointment scheduling using natural language input.
-Built as a stateful, rule-based system with multi-turn dialogue support.
+A conversational AI assistant for booking, canceling, and rescheduling appointments using natural language.
 
 ---
 
-## 🚀 Live Demo
+## 🌐 Live Demo
 
-👉 https://vera-bot-1.onrender.com
+👉 https://vera-bot-1-ldar.onrender.com
 
 ---
 
 ## 🧠 Overview
 
-Vera Bot allows users to book, cancel, and reschedule appointments through conversational interactions.
-It intelligently extracts date and time from flexible user input and manages dialogue state across multiple turns.
+Vera Bot enables users to interact conversationally to manage appointments.
+It supports flexible inputs like:
+
+* "tomorrow evening"
+* "next monday 6pm"
+* "book appointment 5 nov 9pm"
+
+The system maintains conversational state and handles multi-step interactions.
 
 ---
 
 ## ✨ Features
 
-### 🗓️ Appointment Booking
-
-* Supports multi-step conversations
-* Accepts flexible inputs like:
-
-  * "tomorrow evening"
-  * "next monday 6pm"
-  * "book appointment 5 nov 9pm"
-
----
-
-### 🔁 Rescheduling
-
-* Modify existing appointments:
-
-  * "change my appointment to friday 8pm"
-
----
-
-### ❌ Cancellation
-
-* Cancel existing bookings:
-
-  * "cancel my booking"
-
----
-
-### 🧠 Context Awareness
-
-* Maintains state across conversation turns
-* Handles:
-
-  * partial inputs (only date / only time)
-  * flexible order (time → date or date → time)
-
----
-
-### ✏️ Correction Handling
-
-* Supports user corrections:
-
-  * "actually make it tuesday 6pm"
-
----
-
-### ✅ Validation
-
-* Prevents invalid bookings:
-
-  * past dates are rejected
+* ✅ Multi-turn booking flow (date + time collection)
+* ✅ Handles partial inputs (only date / only time)
+* ✅ Flexible input order (time → date or date → time)
+* ✅ Cancellation support ("cancel my booking")
+* ✅ Rescheduling ("change my appointment to friday 8pm")
+* ✅ Correction handling ("actually make it tuesday 6pm")
+* ✅ Date validation (prevents past bookings)
 
 ---
 
 ## 🧱 Tech Stack
 
-| Layer             | Technology   |
-| ----------------- | ------------ |
-| Language          | Python       |
-| Backend Framework | Flask        |
-| NLP Utility       | dateparser   |
-| Deployment        | Render       |
-| Version Control   | Git + GitHub |
+* Python
+* Flask (Backend API)
+* dateparser (Natural language date/time parsing)
+* Render (Deployment)
+* Git & GitHub (Version control)
 
 ---
 
 ## ⚙️ Architecture
 
-```text
+```
 User Input → Intent Detection → Action Handler → State Update → Response
 ```
 
 ### Components:
 
-* `intent.py` → detects user intent (booking, cancel, reschedule)
-* `actions.py` → core logic & state management
-* `utils.py` → date/time extraction
-* `app.py` → Flask API wrapper
+* `intent.py` → detects user intent
+* `actions.py` → handles logic + state
+* `utils.py` → extracts date/time
+* `app.py` → Flask API
 
 ---
 
@@ -137,80 +97,30 @@ User: next monday
 Bot: Got the date. What time should I book?
 
 User: 6pm
-Bot: You're all set! I've booked your appointment for May 05 at 6:00 PM.
+Bot: You're all set! I've booked your appointment...
 ```
 
 ---
 
 ## ⚠️ Limitations
 
-* Rule-based intent detection (no ML/NLP model)
-* No persistent storage (data resets on restart)
-* Limited handling of:
-
-  * ambiguous inputs
-  * multiple intents in one message
-* Single-user state (not scalable for multi-user systems)
+* Rule-based intent detection (no ML model)
+* No persistent storage (state resets on restart)
+* Single-user state (not scalable)
+* Limited handling of ambiguous or multi-intent inputs
 
 ---
 
-## 🚀 Setup Instructions
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/Srichandana03/vera-bot.git
-cd vera-bot
-```
-
----
-
-### 2. Install Dependencies
+## 🚀 Run Locally
 
 ```bash
 pip install -r requirements.txt
-```
-
----
-
-### 3. Run Locally
-
-```bash
 python app.py
 ```
 
 ---
 
-### 4. Access
-
-```
-http://localhost:10000
-```
-
----
-
-## 🌐 Deployment
-
-Deployed using **Render** as a web service.
-
-* Flask API exposed via `/chat`
-* Uses dynamic port binding for cloud hosting
-
----
-
-## 🔮 Future Improvements
-
-* Replace rule-based intent detection with ML/NLP model
-* Add persistent storage (database)
-* Support multi-user sessions
-* Handle ambiguous and multi-intent inputs
-* Build frontend UI for better interaction
-
----
-
 ## 👩‍💻 Author
 
-**Srichandana**
+Srichandana
 B.Tech – Artificial Intelligence & Machine Learning
-
----
